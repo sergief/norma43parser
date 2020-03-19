@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from decimal import Decimal
 from typing import List
 
@@ -6,16 +6,16 @@ from typing import List
 class MovementLine:
     def __init__(
         self,
-        branch_code: str,
-        operation_date: datetime,
-        value_date: datetime,
-        initial_balance: Decimal,
-        description: str,
-        extra_information: List[str],
+        branch_key: str = None,
+        operation_date: date = None,
+        value_date: date = None,
+        initial_balance: Decimal = None,
+        description: str = None,
+        extra_information: List[str] = [],
     ) -> None:
-        self.branch_code = branch_code
+        self.branch_key = branch_key
         self.operation_date = operation_date
         self.value_date = value_date
-        self.inital_balance = initial_balance
+        self.initial_balance = initial_balance
         self.description = description
         self.extra_information = extra_information

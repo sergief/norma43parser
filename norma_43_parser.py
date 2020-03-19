@@ -3,7 +3,7 @@ from datetime import datetime
 from decimal import Decimal
 from enum import Enum
 
-from models import Norma43Document, Header, Footer
+from models import Norma43Document, Header, Footer, MovementLine
 
 
 class LineType(Enum):
@@ -12,6 +12,9 @@ class LineType(Enum):
     MOVEMENT_LINE_EXTRA_INFORMATION = 23
     FOOTER = 33
     END_OF_FILE = 88
+
+
+FORMAT_DATES = "%d%m%Y"
 
 
 class Norma43Parser:
@@ -50,13 +53,12 @@ class Norma43Parser:
 
     @classmethod
     def _parse_header(cls, line: str, norma_43: Norma43Document) -> Norma43Document:
-        format_dates = "%d%m%Y"
         ret = copy.deepcopy(norma_43)
         bank_identifier = line[2:6]
         branch_key = line[6:10]
         account_number = line[10:20]
-        start_date = datetime.strptime(line[20:24] + "20" + line[24:26], format_dates).date()
-        end_date = datetime.strptime(line[26:30] + "20" + line[30:32], format_dates).date()
+        start_date = datetime.strptime(line[20:24] + "20" + line[24:26], FORMAT_DATES).date()
+        end_date = datetime.strptime(line[26:30] + "20" + line[30:32], FORMAT_DATES).date()
 
         initial_balance_sign = 1 if line[32:33] == "2" else -1
         initial_balance_str = line[33:47]
@@ -81,13 +83,28 @@ class Norma43Parser:
     @classmethod
     def _parse_movement_line(cls, line: str, norma_43: Norma43Document) -> Norma43Document:
         ret = copy.deepcopy(norma_43)
-        # TODO
+        branch_key = line[6:10]
+        operation_date = datetime.strptime(line[10:14] + "20" + line[14:16], FORMAT_DATES).date()
+        value_date = datetime.strptime(line[16:20] + "20" + line[20:22], FORMAT_DATES).date()
+        initial_balance_sign = 1 if line[27:28] == "2" else -1
+        initial_balance_str = line[28:42]
+        initial_balance = initial_balance_sign * Decimal(initial_balance_str) / Decimal("100")
+        description = line[52:]
+        ret.movement_lines.append(
+            MovementLine(
+                branch_key=branch_key,
+                operation_date=operation_date,
+                value_date=value_date,
+                initial_balance=initial_balance,
+                description=description,
+            )
+        )
         return ret
 
     @classmethod
     def _parse_movement_line_extra_information(cls, line: str, norma_43: Norma43Document) -> Norma43Document:
         ret = copy.deepcopy(norma_43)
-        # TODO
+        ret.movement_lines[-1].extra_information.append(line[4:])
         return ret
 
     @classmethod
