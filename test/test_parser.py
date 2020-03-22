@@ -61,7 +61,7 @@ class TestHeaderParser:
 class TestFooterParser:
     @classmethod
     def setup_class(cls):
-        cls.FOOTER_CONTENT = "33123422221234567890000000000000000000000200000000015075200000000215075978"
+        cls.FOOTER_CONTENT = "3312342222123456789000000000000000000000000200000000015075200000000215075978"
 
     def test_parse_header_bank_identifier(self):
         norma_43_document = Norma43Parser().parse_norma_43_file_contents(self.FOOTER_CONTENT)
