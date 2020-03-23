@@ -1,7 +1,7 @@
 from datetime import date
 from decimal import Decimal
 
-from norma43parser.norma_43_parser import Norma43Parser
+from norma43parser import Norma43Parser
 
 
 def test_parse_end_of_file():
