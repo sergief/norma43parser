@@ -4,7 +4,7 @@ from decimal import Decimal
 from enum import Enum
 from typing import Final
 
-from models import Norma43Document, Header, Footer, MovementLine
+from norma43parser.models import Norma43Document, Header, Footer, MovementLine
 
 
 class LineType(Enum):
