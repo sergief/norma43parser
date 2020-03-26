@@ -1,7 +1,7 @@
 from datetime import date
 from decimal import Decimal
 
-from norma43parser import Norma43Parser
+from norma43parser import Norma43Parser, DateFormat
 
 
 class TestParser:
@@ -13,7 +13,7 @@ class TestParser:
 2302AUTOMOCION LAGUNA SL 41001 SEVILLA ES
 3312342222123456789000000000000000000000000200000000015075200000000215075978
 88999999999999999999123456"""
-        cls.norma_43_document = Norma43Parser("DMY").parse(cls.FILE_CONTENT)
+        cls.norma_43_document = Norma43Parser(DateFormat.SPANISH).parse(cls.FILE_CONTENT)
 
     def test_parse_header_bank_identifier(self):
         assert self.norma_43_document.header.bank_identifier == "1234"

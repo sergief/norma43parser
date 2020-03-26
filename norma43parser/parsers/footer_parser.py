@@ -1,13 +1,14 @@
 import copy
 from decimal import Decimal
 
+from .date_format import DateFormat
 from .line_parser import LineParser
 from .. import Norma43Document, Footer
 
 
 class FooterParser(LineParser):
     @classmethod
-    def parse(cls, line: str, norma_43: Norma43Document, date_format: str) -> Norma43Document:
+    def parse(cls, line: str, norma_43: Norma43Document, date_format: DateFormat) -> Norma43Document:
         ret = copy.deepcopy(norma_43)
         bank_identifier = line[2:6]
         branch_key = line[6:10]

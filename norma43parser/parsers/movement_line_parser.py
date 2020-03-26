@@ -1,13 +1,14 @@
 import copy
 from decimal import Decimal
 
+from .date_format import DateFormat
 from .line_parser import LineParser
 from .. import Norma43Document, MovementLine
 
 
 class MovementLineParser(LineParser):
     @classmethod
-    def parse(cls, line: str, norma_43: Norma43Document, date_format: str) -> Norma43Document:
+    def parse(cls, line: str, norma_43: Norma43Document, date_format: DateFormat) -> Norma43Document:
         ret = copy.deepcopy(norma_43)
         branch_key = line[6:10]
         operation_date = cls._retrieve_date(line[10:16], date_format)
