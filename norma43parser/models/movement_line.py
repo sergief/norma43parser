@@ -11,11 +11,11 @@ class MovementLine:
         value_date: date = None,
         initial_balance: Decimal = None,
         description: str = None,
-        extra_information: List[str] = [],
+        extra_information: List[str] = None,
     ) -> None:
         self.branch_key = branch_key
         self.operation_date = operation_date
         self.value_date = value_date
         self.initial_balance = initial_balance
         self.description = description
-        self.extra_information = extra_information
+        self.extra_information = extra_information if extra_information is not None else []

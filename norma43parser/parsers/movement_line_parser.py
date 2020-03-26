@@ -16,6 +16,8 @@ class MovementLineParser(LineParser):
         initial_balance_str = line[28:42]
         initial_balance = initial_balance_sign * Decimal(initial_balance_str) / Decimal("100")
         description = line[52:]
+        if ret.movement_lines is None:
+            ret.movement_lines = []
         ret.movement_lines.append(
             MovementLine(
                 branch_key=branch_key,
