@@ -22,7 +22,7 @@ class FooterParser(LineParser):
         final_balance = final_balance_sign * Decimal(final_balance_str) / Decimal("100")
         currency = line[73:76]
         # TODO: convert currency
-        ret.footer = Footer(
+        ret.accounts[-1].footer = Footer(
             bank_identifier=bank_identifier,
             branch_key=branch_key,
             account_number=account_number,

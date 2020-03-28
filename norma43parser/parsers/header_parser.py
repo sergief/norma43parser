@@ -3,7 +3,7 @@ from decimal import Decimal
 
 from .date_format import DateFormat
 from .line_parser import LineParser
-from .. import Norma43Document, Header
+from .. import Norma43Document, Header, Account
 
 
 class HeaderParser(LineParser):
@@ -22,16 +22,21 @@ class HeaderParser(LineParser):
         currency = line[47:50]
         type_of_information_service = line[50:51]
         account_name = line[51:]
-        ret.header = Header(
-            bank_identifier=bank_identifier,
-            branch_key=branch_key,
-            account_number=account_number,
-            start_date=start_date,
-            end_date=end_date,
-            initial_balance=initial_balance,
-            currency=currency,
-            type_of_information_service=type_of_information_service,
-            account_name=account_name,
+        ret.accounts.append(
+            Account(
+                header=Header(
+                    bank_identifier=bank_identifier,
+                    branch_key=branch_key,
+                    account_number=account_number,
+                    start_date=start_date,
+                    end_date=end_date,
+                    initial_balance=initial_balance,
+                    currency=currency,
+                    type_of_information_service=type_of_information_service,
+                    account_name=account_name,
+                )
+            )
         )
+
         # TODO replace currency
         return ret
