@@ -6,7 +6,7 @@ from norma43parser.parsers.movement_line_extra_information_parser import Movemen
 class TestMovementLineParser:
     @classmethod
     def setup_class(cls):
-        cls.CONTENT = ["2301LIQ. OP. N 000000000000069", "2302AUTOMOCION LAGUNA SL 41001 SEVILLA ES"]
+        cls.CONTENT = ["2301PAYMENT OPERATION APPROVED", "2302GROCERIES AND OTHER PAYMENTS SSSLLLAB"]
 
     def test_parse_extra_information(self):
         norma_43_document = Norma43Document(accounts=[Account(movement_lines=[MovementLine()])])
@@ -16,5 +16,5 @@ class TestMovementLineParser:
         extra_information = norma_43_document.accounts[0].movement_lines[0].extra_information
 
         assert len(extra_information) == 2
-        assert extra_information[0] == "LIQ. OP. N 000000000000069"
-        assert extra_information[1] == "AUTOMOCION LAGUNA SL 41001 SEVILLA ES"
+        assert extra_information[0] == "PAYMENT OPERATION APPROVED"
+        assert extra_information[1] == "GROCERIES AND OTHER PAYMENTS SSSLLLAB"

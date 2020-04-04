@@ -20,7 +20,7 @@ class HeaderParser(LineParser):
         initial_balance_str = line[33:47]
         initial_balance = initial_balance_sign * Decimal(initial_balance_str) / Decimal("100")
         currency = line[47:50]
-        type_of_information_service = line[50:51]
+        information_mode_code = line[50:51]
         account_name = line[51:]
         ret.accounts.append(
             Account(
@@ -32,7 +32,7 @@ class HeaderParser(LineParser):
                     end_date=end_date,
                     initial_balance=initial_balance,
                     currency=currency,
-                    type_of_information_service=type_of_information_service,
+                    information_mode_code=information_mode_code,
                     account_name=account_name,
                 )
             )

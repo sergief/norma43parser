@@ -12,7 +12,7 @@ class Header:
         end_date: date = None,
         initial_balance: Decimal = None,
         currency: str = None,
-        type_of_information_service: str = None,
+        information_mode_code: str = None,
         account_name: str = None,
     ) -> None:
         self.bank_identifier = bank_identifier
@@ -22,5 +22,5 @@ class Header:
         self.end_date = end_date
         self.initial_balance = initial_balance
         self.currency = currency
-        self.type_of_information_service = type_of_information_service
+        self.information_mode_code = information_mode_code
         self.account_name = account_name

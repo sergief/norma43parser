@@ -5,7 +5,7 @@ setup(
     packages=["norma43parser"],
     version="0.1",
     license="MIT",
-    description="Parser for Bank Account information files formated in Norma 43",
+    description="Parser for Bank Account information files formatted in Norma 43",
     author="Sergi Espinar",
     author_email="sergief@users.noreply.github.com",
     url="https://github.com/sergief/norma43parser",

@@ -13,16 +13,26 @@ class MovementLineParser(LineParser):
         branch_key = line[6:10]
         operation_date = cls._retrieve_date(line[10:16], date_format)
         value_date = cls._retrieve_date(line[16:22], date_format)
-        initial_balance_sign = 1 if line[27:28] == "2" else -1
-        initial_balance_str = line[28:42]
-        initial_balance = initial_balance_sign * Decimal(initial_balance_str) / Decimal("100")
+        amount_sign = 1 if line[27:28] == "2" else -1
+        amount_str = line[28:42]
+        amount = amount_sign * Decimal(amount_str) / Decimal("100")
         description = line[52:]
+        balance = (
+            (
+                norma_43.accounts[-1].header.initial_balance
+                if norma_43.accounts[-1].header is not None and norma_43.accounts[-1].header.initial_balance is not None
+                else Decimal("0")
+            )
+            if len(norma_43.accounts[-1].movement_lines) == 0
+            else norma_43.accounts[-1].movement_lines[-1].balance or 0
+        ) + amount
         ret.accounts[-1].movement_lines.append(
             MovementLine(
                 branch_key=branch_key,
                 operation_date=operation_date,
                 value_date=value_date,
-                initial_balance=initial_balance,
+                amount=amount,
+                balance=balance,
                 description=description,
             )
         )
