@@ -6,16 +6,16 @@ from typing import List
 class MovementLine:
     def __init__(
         self,
-        branch_key: str = None,
-        operation_date: date = None,
+        branch_code: str = None,
+        transaction_date: date = None,
         value_date: date = None,
         amount: Decimal = None,
         balance: Decimal = None,
         description: str = None,
         extra_information: List[str] = None,
     ) -> None:
-        self.branch_key = branch_key
-        self.operation_date = operation_date
+        self.branch_code = branch_code
+        self.transaction_date = transaction_date
         self.value_date = value_date
         self.amount = amount
         self.balance = balance

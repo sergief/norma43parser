@@ -10,13 +10,13 @@ class TestHeaderParser:
     def setup_class(cls):
         cls.HEADER_CONTENT = "111234222212345678900102180202182000000002000009783ACME INC XYZAB"
 
-    def test_parse_header_bank_identifier(self):
+    def test_parse_header_bank_code(self):
         norma_43_document = HeaderParser.parse(self.HEADER_CONTENT, Norma43Document(), DateFormat.SPANISH)
-        assert norma_43_document.accounts[0].header.bank_identifier == "1234"
+        assert norma_43_document.accounts[0].header.bank_code == "1234"
 
-    def test_parse_header_branch_key(self):
+    def test_parse_header_branch_code(self):
         norma_43_document = HeaderParser.parse(self.HEADER_CONTENT, Norma43Document(), DateFormat.SPANISH)
-        assert norma_43_document.accounts[0].header.branch_key == "2222"
+        assert norma_43_document.accounts[0].header.branch_code == "2222"
 
     def test_parse_header_account_number(self):
         norma_43_document = HeaderParser.parse(self.HEADER_CONTENT, Norma43Document(), DateFormat.SPANISH)

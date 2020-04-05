@@ -10,8 +10,8 @@ class HeaderParser(LineParser):
     @classmethod
     def parse(cls, line: str, norma_43: Norma43Document, date_format: DateFormat) -> Norma43Document:
         ret = copy.deepcopy(norma_43)
-        bank_identifier = line[2:6]
-        branch_key = line[6:10]
+        bank_code = line[2:6]
+        branch_code = line[6:10]
         account_number = line[10:20]
         start_date = cls._retrieve_date(line[20:26], date_format)
         end_date = cls._retrieve_date(line[26:32], date_format)
@@ -25,8 +25,8 @@ class HeaderParser(LineParser):
         ret.accounts.append(
             Account(
                 header=Header(
-                    bank_identifier=bank_identifier,
-                    branch_key=branch_key,
+                    bank_code=bank_code,
+                    branch_code=branch_code,
                     account_number=account_number,
                     start_date=start_date,
                     end_date=end_date,

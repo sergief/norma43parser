@@ -10,8 +10,8 @@ class FooterParser(LineParser):
     @classmethod
     def parse(cls, line: str, norma_43: Norma43Document, date_format: DateFormat) -> Norma43Document:
         ret = copy.deepcopy(norma_43)
-        bank_identifier = line[2:6]
-        branch_key = line[6:10]
+        bank_code = line[2:6]
+        branch_code = line[6:10]
         account_number = line[10:20]
         debit_entries = int(line[20:25])
         debit_amount = Decimal(line[25:39]) / Decimal("100")
@@ -23,8 +23,8 @@ class FooterParser(LineParser):
         currency = line[73:76]
         # TODO: convert currency
         ret.accounts[-1].footer = Footer(
-            bank_identifier=bank_identifier,
-            branch_key=branch_key,
+            bank_code=bank_code,
+            branch_code=branch_code,
             account_number=account_number,
             debit_entries=debit_entries,
             debit_amount=debit_amount,

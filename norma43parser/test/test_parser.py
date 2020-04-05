@@ -16,11 +16,11 @@ class TestParserSingleAccount:
 88999999999999999999123456"""
         cls.norma_43_document = Norma43Parser(DateFormat.SPANISH).parse(cls.FILE_CONTENT)
 
-    def test_parse_header_bank_identifier(self):
-        assert self.norma_43_document.accounts[0].header.bank_identifier == "1234"
+    def test_parse_header_bank_code(self):
+        assert self.norma_43_document.accounts[0].header.bank_code == "1234"
 
-    def test_parse_header_branch_key(self):
-        assert self.norma_43_document.accounts[0].header.branch_key == "2222"
+    def test_parse_header_branch_code(self):
+        assert self.norma_43_document.accounts[0].header.branch_code == "2222"
 
     def test_parse_header_account_number(self):
         assert self.norma_43_document.accounts[0].header.account_number == "1234567890"
@@ -44,10 +44,10 @@ class TestParserSingleAccount:
         assert self.norma_43_document.accounts[0].header.account_name == "ACME INC XYZAB"
 
     def test_parse_branch_code(self):
-        assert self.norma_43_document.accounts[0].movement_lines[0].branch_key == "2222"
+        assert self.norma_43_document.accounts[0].movement_lines[0].branch_code == "2222"
 
-    def test_parse_operation_date(self):
-        assert self.norma_43_document.accounts[0].movement_lines[0].operation_date == date(2018, 2, 1)
+    def test_parse_transaction_date(self):
+        assert self.norma_43_document.accounts[0].movement_lines[0].transaction_date == date(2018, 2, 1)
 
     def test_parse_amount(self):
         assert self.norma_43_document.accounts[0].movement_lines[0].amount == Decimal("50.25")
@@ -62,11 +62,11 @@ class TestParserSingleAccount:
         assert extra_information[0] == "PAYMENT OPERATION APPROVED"
         assert extra_information[1] == "GROCERIES AND OTHER PAYMENTS SSSLLLAB"
 
-    def test_parse_footer_bank_identifier(self):
-        assert self.norma_43_document.accounts[0].footer.bank_identifier == "1234"
+    def test_parse_footer_bank_code(self):
+        assert self.norma_43_document.accounts[0].footer.bank_code == "1234"
 
-    def test_parse_footer_branch_key(self):
-        assert self.norma_43_document.accounts[0].footer.branch_key == "2222"
+    def test_parse_footer_branch_code(self):
+        assert self.norma_43_document.accounts[0].footer.branch_code == "2222"
 
     def test_parse_footer_account_number(self):
         assert self.norma_43_document.accounts[0].footer.account_number == "1234567890"
@@ -109,13 +109,13 @@ class TestParseMultiAccountAccount:
 88999999999999999999123456"""
         cls.norma_43_document = Norma43Parser(DateFormat.SPANISH).parse(cls.FILE_CONTENT)
 
-    def test_parse_header_bank_identifier(self):
-        assert self.norma_43_document.accounts[0].header.bank_identifier == "1234"
-        assert self.norma_43_document.accounts[1].header.bank_identifier == "4321"
+    def test_parse_header_bank_code(self):
+        assert self.norma_43_document.accounts[0].header.bank_code == "1234"
+        assert self.norma_43_document.accounts[1].header.bank_code == "4321"
 
-    def test_parse_header_branch_key(self):
-        assert self.norma_43_document.accounts[0].header.branch_key == "2222"
-        assert self.norma_43_document.accounts[1].header.branch_key == "4444"
+    def test_parse_header_branch_code(self):
+        assert self.norma_43_document.accounts[0].header.branch_code == "2222"
+        assert self.norma_43_document.accounts[1].header.branch_code == "4444"
 
     def test_parse_header_account_number(self):
         assert self.norma_43_document.accounts[0].header.account_number == "1234567890"
@@ -146,11 +146,11 @@ class TestParseMultiAccountAccount:
         assert self.norma_43_document.accounts[1].header.account_name == "EVIL CORPORATI088"
 
     def test_parse_branch_code(self):
-        assert self.norma_43_document.accounts[0].movement_lines[0].branch_key == "2222"
-        assert self.norma_43_document.accounts[1].movement_lines[0].branch_key == "4444"
+        assert self.norma_43_document.accounts[0].movement_lines[0].branch_code == "2222"
+        assert self.norma_43_document.accounts[1].movement_lines[0].branch_code == "4444"
 
-    def test_parse_operation_date(self):
-        assert self.norma_43_document.accounts[0].movement_lines[0].operation_date == date(2018, 2, 1)
+    def test_parse_transaction_date(self):
+        assert self.norma_43_document.accounts[0].movement_lines[0].transaction_date == date(2018, 2, 1)
 
     def test_parse_amount(self):
         assert self.norma_43_document.accounts[0].movement_lines[0].amount == Decimal("50.25")
@@ -172,13 +172,13 @@ class TestParseMultiAccountAccount:
         assert extra_information[0] == "SUCCESSFUL PAYMENT OPERAT."
         assert extra_information[1] == "SUPERMARKET AND OTHER PAYMENTS S12345"
 
-    def test_parse_footer_bank_identifier(self):
-        assert self.norma_43_document.accounts[0].footer.bank_identifier == "1234"
-        assert self.norma_43_document.accounts[1].footer.bank_identifier == "4321"
+    def test_parse_footer_bank_code(self):
+        assert self.norma_43_document.accounts[0].footer.bank_code == "1234"
+        assert self.norma_43_document.accounts[1].footer.bank_code == "4321"
 
-    def test_parse_footer_branch_key(self):
-        assert self.norma_43_document.accounts[0].footer.branch_key == "2222"
-        assert self.norma_43_document.accounts[1].footer.branch_key == "4444"
+    def test_parse_footer_branch_code(self):
+        assert self.norma_43_document.accounts[0].footer.branch_code == "2222"
+        assert self.norma_43_document.accounts[1].footer.branch_code == "4444"
 
     def test_parse_footer_account_number(self):
         assert self.norma_43_document.accounts[0].footer.account_number == "1234567890"

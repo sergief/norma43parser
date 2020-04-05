@@ -4,8 +4,8 @@ from decimal import Decimal
 class Footer:
     def __init__(
         self,
-        bank_identifier: str = None,
-        branch_key: str = None,
+        bank_code: str = None,
+        branch_code: str = None,
         account_number: str = None,
         debit_entries: int = None,
         debit_amount: Decimal = None,
@@ -14,8 +14,8 @@ class Footer:
         final_balance: Decimal = None,
         currency: str = None,
     ) -> None:
-        self.bank_identifier = bank_identifier
-        self.branch_key = branch_key
+        self.bank_code = bank_code
+        self.branch_code = branch_code
         self.account_number = account_number
         self.debit_entries = debit_entries
         self.debit_amount = debit_amount

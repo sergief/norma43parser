@@ -5,8 +5,8 @@ from decimal import Decimal
 class Header:
     def __init__(
         self,
-        bank_identifier: str = None,
-        branch_key: str = None,
+        bank_code: str = None,
+        branch_code: str = None,
         account_number: str = None,
         start_date: date = None,
         end_date: date = None,
@@ -15,8 +15,8 @@ class Header:
         information_mode_code: str = None,
         account_name: str = None,
     ) -> None:
-        self.bank_identifier = bank_identifier
-        self.branch_key = branch_key
+        self.bank_code = bank_code
+        self.branch_code = branch_code
         self.account_number = account_number
         self.start_date = start_date
         self.end_date = end_date

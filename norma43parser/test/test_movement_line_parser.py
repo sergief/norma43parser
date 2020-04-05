@@ -14,13 +14,13 @@ class TestMovementLineParser:
         norma_43_document = MovementLineParser.parse(
             self.CONTENT, Norma43Document(accounts=[Account(header=Header(initial_balance=0))]), DateFormat.SPANISH
         )
-        assert norma_43_document.accounts[0].movement_lines[0].branch_key == "2222"
+        assert norma_43_document.accounts[0].movement_lines[0].branch_code == "2222"
 
-    def test_parse_operation_date(self):
+    def test_parse_transaction_date(self):
         norma_43_document = MovementLineParser.parse(
             self.CONTENT, Norma43Document(accounts=[Account(header=Header(initial_balance=0))]), DateFormat.SPANISH
         )
-        assert norma_43_document.accounts[0].movement_lines[0].operation_date == date(2018, 2, 1)
+        assert norma_43_document.accounts[0].movement_lines[0].transaction_date == date(2018, 2, 1)
 
     def test_parse_amount(self):
         norma_43_document = MovementLineParser.parse(
