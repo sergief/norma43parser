@@ -18,7 +18,7 @@ from norma43parser import Norma43Parser, DateFormat
 parser = Norma43Parser(DateFormat.SPANISH)
 # it reads dates in DMY format, for YMD use DateFormat.ENGLISH
 
-contents = open('.file.n43','r').read()                                                                                                                                                                           
+contents = open('./file.n43','r').read()                                                                                                                                                                           
 
 n43 = parser.parse(contents)
 ```
