@@ -1,9 +1,10 @@
 # Norma 43 Parser
+![Build status](https://github.com/sergief/norma43parser/workflows/Python%20package/badge.svg)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 
 Parser for Norma43 bank account documents, commonly used in spanish banks to retrieve account movements.
-It supports Python 3.5 onwards.
+It supports Python 3.6 onwards.
 
 ## How to install
 
