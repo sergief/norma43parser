@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name="norma43parser",
     packages=["norma43parser"],
-    version="1.0",
+    version="1.1",
     license="MIT",
     description="Parser for Bank Account information files formatted in Norma 43",
     author="Sergi Espinar",
