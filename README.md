@@ -1,5 +1,5 @@
 # Norma 43 Parser
-![Build status](https://github.com/sergief/norma43parser/workflows/Python%20package/badge.svg)
+[![Build status](https://github.com/sergief/norma43parser/workflows/Python%20package/badge.svg)](https://github.com/sergief/norma43parser/actions?query=workflow%3A%22Python+package%22)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 

@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name="norma43parser",
     packages=["norma43parser"],
-    version="0.1",
+    version="1.0",
     license="MIT",
     description="Parser for Bank Account information files formatted in Norma 43",
     author="Sergi Espinar",
@@ -13,12 +13,10 @@ setup(
     keywords=["norma43", "parser", "bank", "account", "n43", "csb"],
     install_requires=[],
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
