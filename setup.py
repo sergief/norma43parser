@@ -11,6 +11,7 @@ setup(
     url="https://github.com/sergief/norma43parser",
     download_url="https://github.com/sergief/norma43parser/archive/master.zip",
     keywords=["norma43", "parser", "bank", "account", "n43", "csb"],
+    setup_requires=["wheel"],
     install_requires=[],
     classifiers=[
         "Development Status :: 4 - Beta",
